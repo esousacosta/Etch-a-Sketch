@@ -30,8 +30,33 @@ function resizeChildrenDivs (ioSketchPadDiv, iSketchPadNumOfElementsByRow)
  */
 function paintElementBlack (oMouseoverPadEvent)
 {
-    console.log("Entrei e pintei");
-    oMouseoverPadEvent.target.classList.add("blackPainted");
+    oMouseoverPadEvent.target.style.backgroundColor = "black";
+}
+
+function changeModeToRainbow()
+{
+    const aSketchPadDivContainer = document.getElementById('sketchPad');
+    const aChildrenDivList = aSketchPadDivContainer.childNodes;
+    aChildrenDivList.forEach(aChildDiv => {aChildDiv.onmouseover = paintWithRandomRgbColor;});
+}
+
+/**
+ * 
+ * @param {object} oEvent mouseover event for a single square
+ */
+function paintWithRandomRgbColor(oEvent)
+{
+    const rgbLimitValue = 255;
+    oEvent.target.style.backgroundColor = 'rgb(' + Math.round((Math.random() * rgbLimitValue)) + ', '
+        + Math.round((Math.random() * rgbLimitValue)) + ', ' + Math.round((Math.random() * rgbLimitValue))
+        + ')';
+}
+
+function changeModeToNormal()
+{
+    const aSketchPadDivContainer = document.getElementById('sketchPad');
+    const aChildrenDivList = aSketchPadDivContainer.childNodes;
+    aChildrenDivList.forEach(aChildDiv => {aChildDiv.onmouseover = paintElementBlack;});
 }
 
 /**
@@ -77,3 +102,9 @@ function updateSketchPad()
 
 const aSubmitPadSizeInputButton = document.getElementById("submitPadSizeInput");
 aSubmitPadSizeInputButton.addEventListener('click', updateSketchPad);
+
+const aRainbowModeButton = document.getElementById("rainbowModeButton");
+aRainbowModeButton.addEventListener('click', changeModeToRainbow);
+
+const aNormalModeButton = document.getElementById("normalModeButton");
+aNormalModeButton.addEventListener('click', changeModeToNormal);
