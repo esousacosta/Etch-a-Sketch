@@ -1,0 +1,10 @@
+.sketchPadContainer {
+    text-align: center;
+    display: flex;
+    width: 960px;
+    height: 960px;
+}
+
+.sketchPadElement {
+    flex: auto;
+}
