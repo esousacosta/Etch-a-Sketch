@@ -1,3 +1,7 @@
+body {
+    text-align: center;
+}
+
 .sketchPadContainer {
     text-align: center;
     display: flex;
@@ -7,16 +11,21 @@
     border: 1px solid black;
     justify-content: space-around;
     align-content: space-around;
+    align-items: stretch;
     flex-wrap: wrap;
     gap: 0px;
     padding: 0px;
-    margin: 5px;
+    margin: 0px auto;
 }
 
 .sketchPadElement {
     box-sizing: border-box;
-    border: 0.01mm solid black;
-    background-color: lightgrey;
-    flex: 1 0 auto;
+    border: 0.001mm solid black;
+    background-color: whitesmoke;
+    flex: 1 1 auto;
     margin: 0;
+}
+
+.blackPainted {
+    background-color: black;
 }
